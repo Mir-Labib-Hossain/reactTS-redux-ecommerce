@@ -1,8 +1,23 @@
 import React from "react";
-import { ProductDetailsProps } from ".";
-import { ProductDetailsWrapper } from "./styled";
-const ProductDetailsView: React.FC<ProductDetailsProps> = ({ product }) => {
-  const { id, title, category } = product[0];
-  return <ProductDetailsWrapper>{title} e</ProductDetailsWrapper>;
+import { Button, Header, Row, Span } from "../../styles/common.styled";
+import { ProductProps } from "../productDetails";
+import { ProductDetails, ProductDetailsWrapper, ProductImg } from "./styled";
+const ProductDetailsView: React.FC<ProductProps> = ({ product }) => {
+  const { id, image, title, category, description, price, rating } = product;
+  return (
+    <ProductDetailsWrapper>
+      <ProductImg bg={image} />
+      <ProductDetails>
+        <Header fontSize="20px">{title}</Header>
+        <Span>{category}</Span>
+        <Header fontSize="25px">${price}</Header>
+        <Span>{description}</Span>
+        <Row>
+          <Button>Add to cart | {rating.count} in stock</Button>
+          <Header fontSize="18px">{rating.rate}</Header>
+        </Row>
+      </ProductDetails>
+    </ProductDetailsWrapper>
+  );
 };
 export default ProductDetailsView;

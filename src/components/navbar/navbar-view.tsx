@@ -4,7 +4,7 @@ import { NavWrapper } from "./styled";
 const NavbarView: React.FC = () => {
   return (
     <NavWrapper>
-      <Header>FakeShop</Header>
+      <Header fontSize="20px">FakeShop</Header>
     </NavWrapper>
   );
 };

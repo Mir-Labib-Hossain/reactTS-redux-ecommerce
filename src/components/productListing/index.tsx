@@ -4,22 +4,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../../store/actions/productAction";
 import ProductListingView from "./product-listing-view";
 
+export interface ProductsProps {
+  products: [
+    {
+      id: number;
+      image: string;
+      title: string;
+      category: string;
+      description: string;
+      price: number;
+      rating: {
+        count: number;
+        rate: number;
+      };
+    }
+  ];
+}
+
 const ProductListing: React.FC = () => {
   console.log("ProductListing");
 
-  const products = useSelector(
-    (state: {
-      productReducer: {
-        products: [
-          {
-           
-          }
-        ];
-      };
-    }) => state.productReducer.products
-  );
   const dispatch = useDispatch();
-
   const fetchData = async () => {
     //help
     const response: any = await axios.get("https://fakestoreapi.com/products").catch((error) => {
@@ -31,8 +36,29 @@ const ProductListing: React.FC = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log("products: " + products);
 
-  return <ProductListingView />;
+  const products = useSelector(
+    (state: {
+      productReducer: {
+        products: [
+          {
+            id: number;
+            image: string;
+            title: string;
+            category: string;
+            description: string;
+            price: number;
+            rating: {
+              count: number;
+              rate: number;
+            };
+          }
+        ];
+      };
+    }) => state.productReducer.products
+  );
+
+  return <ProductListingView products={products} />;
 };
+
 export default ProductListing;
