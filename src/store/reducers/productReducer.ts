@@ -1,16 +1,16 @@
-import { ActionTypes } from "./../contants/action-types";
+import { REMOVE_SELECTED_PRODUCT, SELECTED_PRODUCT, SET_PRODUCTS } from "./../contants/action-types";
 const initialState = {
   products: [{}],
 };
 
-interface Action {
+interface IAction {
   type: {};
   payload: {};
 }
 
-export const productReducer = (state = initialState, { type, payload }: Action) => {
+export const productReducer = (state = initialState, { type, payload }: IAction) => {
   switch (type) {
-    case ActionTypes.SET_PRODUCTS:
+    case SET_PRODUCTS:
       return { ...state, products: payload };
 
     default:
@@ -18,14 +18,12 @@ export const productReducer = (state = initialState, { type, payload }: Action) 
   }
 };
 
-export const selectedProductReducer = (state = {}, { type, payload }: Action) => {
-  console.log("payload" + payload);
-
+export const selectedProductReducer = (state = {}, { type, payload }: IAction) => {
   switch (type) {
-    case ActionTypes.SELECTED_PRODUCT:
+    case SELECTED_PRODUCT:
       return { ...state, product: payload };
 
-    case ActionTypes.REMOVE_SELECTED_PRODUCT:
+    case REMOVE_SELECTED_PRODUCT:
       return {};
 
     default:
