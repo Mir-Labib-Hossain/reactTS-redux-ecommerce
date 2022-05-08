@@ -1,7 +1,11 @@
 import React from "react";
 import { Button, Header, Row, Span } from "../../styles/common.styled";
 import { ProductDetails, ProductDetailsWrapper, ProductImg } from "./styled";
-const ProductDetailsView: React.FC<IProduct> = ({ product }) => {
+interface ProductDetailsViewProps {
+  product: IProduct;
+}
+
+const ProductDetailsView: React.FC<ProductDetailsViewProps> = ({ product }) => {
   const { id, image, title, category, description, price, rating } = product;
   return (
     <ProductDetailsWrapper>

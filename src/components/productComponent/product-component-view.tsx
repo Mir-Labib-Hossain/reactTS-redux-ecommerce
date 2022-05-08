@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ProductProps } from ".";
 import { Header, Paragraph } from "../../styles/common.styled";
 import { CardImg, ProductCard } from "./styled";
-const ProductComponentView: React.FC<ProductProps> = ({ id, image, title, category, description, price, rating }) => {
+const ProductComponentView: React.FC<IProduct> = ({ id, image, title, category, description, price, rating }) => {
   return (
     <Link to={`/product/${id}`}>
       <ProductCard>

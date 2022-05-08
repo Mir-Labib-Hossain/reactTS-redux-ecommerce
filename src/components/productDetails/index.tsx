@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { removeSelectedProducts, selectedProducts } from "../../store/actions/productAction";
 import ProductDetailsView from "./product-details-view";
- 
+
 const ProductDetails: React.FC = () => {
   console.log("ProductDetails");
+
   const { productId } = useParams();
   const dispatch = useDispatch();
   const fetchData = async () => {
@@ -24,8 +25,8 @@ const ProductDetails: React.FC = () => {
     };
   }, [productId]);
 
-  const product = useSelector((state: ISelectedProductReducer) => state.selectedProductReducer.product);
- 
-  return product && <ProductDetailsView product={product} />;
+  const product = useSelector((state: IState) => state.selectedProductReducer.product);
+
+  return product && <ProductDetailsView  product={product} />;
 };
 export default memo(ProductDetails);

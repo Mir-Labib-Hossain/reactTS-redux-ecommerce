@@ -5,7 +5,9 @@ import { setProducts } from "../../store/actions/productAction";
 import ProductListingView from "./product-listing-view";
 
 const ProductListing: React.FC = () => {
-  console.log("ProductListing");
+  useEffect(() => {
+    console.log("ProductListing");
+  }, []);
 
   const dispatch = useDispatch();
   const fetchData = async () => {
@@ -19,7 +21,7 @@ const ProductListing: React.FC = () => {
     fetchData();
   }, []);
 
-  const products = useSelector((state: IProductsReducer) => state.productReducer.products);
+  const products = useSelector((state: IState) => state.productReducer.products);
 
   return <ProductListingView products={products} />;
 };
