@@ -4,4 +4,5 @@ export const List = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  background-color: #b897fb;
 `;

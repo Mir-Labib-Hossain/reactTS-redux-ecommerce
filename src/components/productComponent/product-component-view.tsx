@@ -9,7 +9,7 @@ const ProductComponentView: React.FC<ProductProps> = ({ id, image, title, catego
       <ProductCard>
         <CardImg bg={image} />
         <Header fontSize="20px">{title}</Header>
-        <Paragraph>{price}</Paragraph>
+        <Paragraph>${price}</Paragraph>
         <Paragraph>{category}</Paragraph>
       </ProductCard>
     </Link>

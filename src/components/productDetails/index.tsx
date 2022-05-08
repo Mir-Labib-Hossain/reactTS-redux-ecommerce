@@ -1,23 +1,10 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { selectedProducts,removeSelectedProducts } from "../../store/actions/productAction";
+import { removeSelectedProducts, selectedProducts } from "../../store/actions/productAction";
 import ProductDetailsView from "./product-details-view";
-export interface ProductProps {
-  product: {
-    id: number;
-    image: string;
-    title: string;
-    category: string;
-    description: string;
-    price: number;
-    rating: {
-      count: number;
-      rate: number;
-    };
-  };
-}
+ 
 const ProductDetails: React.FC = () => {
   console.log("ProductDetails");
   const { productId } = useParams();
@@ -32,31 +19,13 @@ const ProductDetails: React.FC = () => {
 
   useEffect(() => {
     productId && fetchData();
-    return()=>{
+    return () => {
       dispatch(removeSelectedProducts({}));
-    }
+    };
   }, [productId]);
 
-  const product = useSelector(
-    (state: {
-      selectedProductReducer: {
-        product: {
-          id: number;
-          image: string;
-          title: string;
-          category: string;
-          description: string;
-          price: number;
-          rating: {
-            count: number;
-            rate: number;
-          };
-        };
-      };
-    }) => state.selectedProductReducer.product
-  );
-  console.log(product);
-
+  const product = useSelector((state: ISelectedProductReducer) => state.selectedProductReducer.product);
+ 
   return product && <ProductDetailsView product={product} />;
 };
-export default ProductDetails;
+export default memo(ProductDetails);

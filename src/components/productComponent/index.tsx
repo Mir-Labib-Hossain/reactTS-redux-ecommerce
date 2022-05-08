@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import ProductComponentView from "./product-component-view";
 
 export interface ProductProps {
@@ -16,6 +16,6 @@ export interface ProductProps {
 const ProductComponent: React.FC<ProductProps> = ({ id, image, title, category, description, price, rating }) => {
   console.log("ProductComponent");
 
-  return <ProductComponentView  id={id} image={image} title={title} category={category} description={description} price={price} rating={rating} />;
+  return <ProductComponentView id={id} image={image} title={title} category={category} description={description} price={price} rating={rating} />;
 };
-export default ProductComponent;
+export default memo(ProductComponent);

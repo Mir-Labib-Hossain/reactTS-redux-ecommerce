@@ -9,6 +9,7 @@ export const ProductCard = styled.div`
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  background-color: white;
   cursor: pointer;
   h1 {
     font-size: 20px;

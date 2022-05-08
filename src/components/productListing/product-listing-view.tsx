@@ -1,18 +1,13 @@
 import React from "react";
-import { ProductsProps } from ".";
-import { Header } from "../../styles/common.styled";
 import ProductComponent from "../productComponent";
 import { List } from "./styled";
-const ProductListingView: React.FC<ProductsProps> = ({ products }) => {
+const ProductListingView: React.FC<IProducts> = ({ products }) => {
   console.log(products);
-  const productList = products.map(({ id, image, title, category, description, price, rating }) => {
-    return <ProductComponent id={id} image={image} title={title} category={category} description={description} price={price} rating={rating} />;
+
+  const productList = products.map(({ id, image, title, category, description, price, rating }, index) => {
+    return <ProductComponent key={index} id={id} image={image} title={title} category={category} description={description} price={price} rating={rating} />;
   });
-  return (
-    <>
-      <Header fontSize="20px">Product List</Header>
-      <List>{productList}</List>
-    </>
-  );
+
+  return <List>{productList}</List>;
 };
 export default ProductListingView;
